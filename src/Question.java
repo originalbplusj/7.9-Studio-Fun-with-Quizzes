@@ -1,16 +1,11 @@
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public abstract class Question  {
+public class Question {
     private String question;
-    private String correctAnswer;
+    private ArrayList<String> correctAnswer;
     private ArrayList<String> answerChoices;
 
-    public Question(String question, String correctAnswer, ArrayList<String> answerChoices) {
-        this.question = question;
-        this.correctAnswer = correctAnswer;
-        this.answerChoices = answerChoices;
-    }
 
     // getters and setters
 
@@ -18,34 +13,44 @@ public abstract class Question  {
         return question;
     }
 
-    public String getCorrectAnswer() {
+    public void setQuestion(String question) {
+        this.question = question;
+    }
+
+    public ArrayList<String> getCorrectAnswer() {
         return correctAnswer;
+    }
+
+    public void setCorrectAnswer(ArrayList<String> correctAnswer) {
+        this.correctAnswer = correctAnswer;
     }
 
     public ArrayList<String> getAnswerChoices() {
         return answerChoices;
     }
 
-    public void setQuestion(String question) {
-        this.question = question;
-    }
-
-    public void setCorrectAnswer(String correctAnswer) {
-        this.correctAnswer = correctAnswer;
-    }
-
     public void setAnswerChoices(ArrayList<String> answerChoices) {
         this.answerChoices = answerChoices;
     }
 
-    public void displayQuestion(){
+
+    public Question(String question, ArrayList<String> correctAnswer, ArrayList<String> answerChoices) {
+        this.question = question;
+        this.correctAnswer = correctAnswer;
+        this.answerChoices = answerChoices;
+
+    }
+    public void displayQuestion() {
+        System.out.println("Please enter the number of the correct answer: ");
         System.out.println(question);
-        for(String answer: answerChoices) {
+        for (String answer : answerChoices) {
             System.out.println(answer);
 
         }
-        System.out.println("\n");
+            System.out.println("\n");
+        }
+
+
     }
 
-    public abstract String checkAnswer();
-}
+

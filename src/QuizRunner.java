@@ -1,10 +1,10 @@
 public class QuizRunner {
     public static void main(String[] args) {
 
+        Quiz firstQuiz = new Quiz();
 
-        Quiz.multipleChoiceQuestion1.displayQuestion();
-        Quiz.trueOrFalseQuestion2.displayQuestion();
-        Quiz.checkboxQuestion3.displayQuestion();
+        firstQuiz.takeQuiz();
+        firstQuiz.printResult();
 
 
     }
