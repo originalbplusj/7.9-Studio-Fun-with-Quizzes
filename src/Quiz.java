@@ -5,9 +5,9 @@ import java.util.Scanner;
 public class Quiz {
 
     private static ArrayList<Question> quizQuestions;
-    int score;
 
-    public Quiz(){
+
+    public Quiz() {
         // answer choice sets
 
         ArrayList<String> multipleChoicesQuestion1 = new ArrayList<>(Arrays.asList("1 - Matthieu van der Poel", "2 - Dylan van Baarle", "3 - Wout Van Aert", "4 - Filippo Ganna"));
@@ -16,9 +16,9 @@ public class Quiz {
 
         //correct answer sets
 
-        ArrayList<String> multipleChoiceCorrectAnswer = new ArrayList<>(Arrays.asList("Dylan van Baarle"));
-        ArrayList<String> trueOrFalseCorrectAnswer = new ArrayList<>(Arrays.asList("True"));
-        ArrayList<String> checkboxCorrectAnswer = new ArrayList<>(Arrays.asList("Tom Boonen", "Peter Sagan", "Fabian Cancellara"));
+        ArrayList<String> multipleChoiceCorrectAnswer = new ArrayList<>(Arrays.asList("2 - Dylan van Baarle"));
+        ArrayList<String> trueOrFalseCorrectAnswer = new ArrayList<>(Arrays.asList("1 - True"));
+        ArrayList<String> checkboxCorrectAnswer = new ArrayList<>(Arrays.asList("1 - Tom Boonen", "2 - Peter Sagan", "5 - Fabian Cancellara"));
 
 
         //questions
@@ -32,35 +32,43 @@ public class Quiz {
         quizQuestions = new ArrayList<>();
         quizQuestions.add(new Question(question1, multipleChoiceCorrectAnswer, multipleChoicesQuestion1));
         quizQuestions.add(new Question(question2, trueOrFalseCorrectAnswer, trueOrFalseChoicesQuestion2));
-        quizQuestions.add(new Question(question3,  checkboxCorrectAnswer, checkboxChoicesQuestion3));
+        quizQuestions.add(new Question(question3, checkboxCorrectAnswer, checkboxChoicesQuestion3));
 
     }
 
 
-
-    public static int takeQuiz(){
+    public static void takeQuiz() {
         Scanner scan = new Scanner(System.in);
         int score = 0;
-        for(int i = 0; i < quizQuestions.size(); i++){
+        for (int i = 0; i < quizQuestions.size(); i++) {
+
             quizQuestions.get(i).displayQuestion();
-            String inputAnswer = scan.next();
-            for(int j = 0; j < quizQuestions.get(i).getCorrectAnswer().size(); j++);
-                if(quizQuestions.get(i).getCorrectAnswer().contains(inputAnswer)){
-                    score++;
+            int inputAnswer = scan.nextInt();
+            ArrayList<String> theAnswer = quizQuestions.get(i).getCorrectAnswer();
+            ArrayList<String> choices = quizQuestions.get(i).getAnswerChoices();
+            for (int k = 0; k < choices.size(); k++) {
+
+                if (theAnswer.equals(choices.get(k))) {
+
+                    int correctAnswerIndex = k;
+                    //System.out.println(correctAnswerIndex);
+                    if (inputAnswer == (correctAnswerIndex + 1)) {
+
+                        score++;
+                    }
+                }
             }
-
         }
-
-        return score;
-    }
-
-    public void printResult(){
+        scan.close();
         System.out.println("Your score is " + score);
     }
-
-
-
-
-
-
 }
+
+
+
+
+
+
+
+
+

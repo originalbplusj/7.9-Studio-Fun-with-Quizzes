@@ -4,7 +4,7 @@ public class QuizRunner {
         Quiz firstQuiz = new Quiz();
 
         firstQuiz.takeQuiz();
-        firstQuiz.printResult();
+
 
 
     }
